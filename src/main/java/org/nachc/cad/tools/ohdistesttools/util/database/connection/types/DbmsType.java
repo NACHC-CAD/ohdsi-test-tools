@@ -1,4 +1,4 @@
-package org.nachc.cad.tools.ohdistesttools.util.database.types;
+package org.nachc.cad.tools.ohdistesttools.util.database.connection.types;
 
 public enum DbmsType {
 	POSTGRESQL, MSSQL;

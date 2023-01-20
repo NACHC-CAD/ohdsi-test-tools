@@ -1,4 +1,4 @@
-package org.nachc.cad.tools.ohdistesttools.util.database.def;
+package org.nachc.cad.tools.ohdistesttools.util.database.connection.def;
 
 import java.sql.Connection;
 

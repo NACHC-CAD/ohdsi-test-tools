@@ -1,9 +1,9 @@
-package org.nachc.cad.tools.ohdistesttools.util.database.impl;
+package org.nachc.cad.tools.ohdistesttools.util.database.connection.impl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-import org.nachc.cad.tools.ohdistesttools.util.database.def.IConnectionFactory;
+import org.nachc.cad.tools.ohdistesttools.util.database.connection.def.IConnectionFactory;
 import org.nachc.cad.tools.ohdistesttools.util.properties.app.OhdsiTestToolsAppProperties;
 
 import lombok.extern.slf4j.Slf4j;

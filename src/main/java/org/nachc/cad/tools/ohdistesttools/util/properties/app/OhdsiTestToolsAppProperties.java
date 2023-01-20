@@ -3,7 +3,7 @@ package org.nachc.cad.tools.ohdistesttools.util.properties.app;
 import java.io.File;
 import java.util.Properties;
 
-import org.nachc.cad.tools.ohdistesttools.util.database.types.DbmsType;
+import org.nachc.cad.tools.ohdistesttools.util.database.connection.types.DbmsType;
 
 import com.nach.core.util.file.FileUtil;
 import com.nach.core.util.props.PropertiesUtil;
