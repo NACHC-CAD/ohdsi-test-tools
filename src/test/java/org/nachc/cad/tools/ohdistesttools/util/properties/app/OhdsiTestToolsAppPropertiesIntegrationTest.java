@@ -12,7 +12,7 @@ public class OhdsiTestToolsAppPropertiesIntegrationTest {
 	@Test
 	public void shouldGetProperty() {
 		log.info("Starting test...");
-		String dbms = OhdsiTestToolsAppProperties.getDbmsType();
+		String dbms = OhdsiTestToolsAppProperties.getDbmsTypeName();
 		log.info("dbms: " + dbms);
 		assertTrue(dbms != null);
 		log.info("Done.");
