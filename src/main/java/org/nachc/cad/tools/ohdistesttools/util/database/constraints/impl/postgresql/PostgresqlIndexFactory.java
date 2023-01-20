@@ -35,7 +35,7 @@ public class PostgresqlIndexFactory implements IIndexFactory {
 			for(Row row : data) {
 				String tableName = row.get("tableName");
 				String indexName = row.get("indexName");
-				String indexDef = row.get("indexDefinition");
+				String indexDef = row.get("sqlString");
 				if(indexName.equals(prevIndexName) == false) {
 					if(dvo != null) {
 						rtn.add(dvo);
@@ -44,7 +44,7 @@ public class PostgresqlIndexFactory implements IIndexFactory {
 					dvo.setSchemaName(schemaName);
 					dvo.setTableName(tableName);
 					dvo.setIndexName(indexName);
-					dvo.setIndexDefinition(indexDef);
+					dvo.setSqlString(indexDef);
 				}
 				dvo.getColumns().add(row.get("columnName"));
 				prevIndexName = indexName;
@@ -63,7 +63,7 @@ public class PostgresqlIndexFactory implements IIndexFactory {
 		sqlString += "	t.relname as table_name, \n";
 		sqlString += "	i.relname as index_name, \n";
 		sqlString += "	a.attname as column_name, \n";
-		sqlString += "	ixs.indexdef as index_definition \n";
+		sqlString += "	ixs.indexdef as sql_string \n";
 		sqlString += "from \n";
 		sqlString += "	pg_index ix \n"; 
 		sqlString += "	join pg_class i on ix.indexrelid = i.oid \n";

@@ -16,7 +16,9 @@ public class IndexDvo {
 	
 	private String indexName;
 
-	private String indexDefinition;
+	private String sqlString;
+	
+	private String constraint_type;
 	
 	private List<String> columns = new ArrayList<String>();
 	

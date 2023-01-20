@@ -35,7 +35,7 @@ public class IndexFactoryIntegrationTest {
 			msg += StringUtils.rightPad(dvo.getTableName(), 32);
 			msg += StringUtils.rightPad(dvo.getIndexName(), 50);
 			msg += StringUtils.rightPad(dvo.getColumnListAsString(), 50);
-			msg += StringUtils.rightPad(dvo.getIndexDefinition(), 50);
+			msg += StringUtils.rightPad(dvo.getSqlString(), 50);
 		}
 		log.info(msg);
 		log.info("Got " + indexList.size() + " indexes");
