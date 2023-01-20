@@ -3,7 +3,7 @@ package org.nachc.cad.tools.ohdistesttools.util.properties.app;
 import java.io.File;
 import java.util.Properties;
 
-import org.nachc.cad.tools.ohdistesttools.util.database.connection.types.DbmsType;
+import org.nachc.cad.tools.ohdistesttools.util.database.types.DbmsType;
 
 import com.nach.core.util.file.FileUtil;
 import com.nach.core.util.props.PropertiesUtil;
@@ -44,6 +44,10 @@ public class OhdsiTestToolsAppProperties {
 		return PROPS.getProperty("PostgresOhdsiDbName");
 	}
 	
+	public static String getPostgresCdmSchema() {
+		return PROPS.getProperty("PostgresCdmSchema");
+	}
+
 	public static String getPostgresBootstrapUrl() {
 		return PROPS.getProperty("PostgresBootstrapUrl");
 	}
@@ -56,8 +60,8 @@ public class OhdsiTestToolsAppProperties {
 		return PROPS.getProperty("PostgresBootstrapPwd");
 	}
 	
-	public static String getPostgresCdmSchema() {
-		return PROPS.getProperty("PostgresCdmSchema");
+	public static String getPostgresWebApiSchema() {
+		return PROPS.getProperty("PostgresWebApiSchema");
 	}
 
 }

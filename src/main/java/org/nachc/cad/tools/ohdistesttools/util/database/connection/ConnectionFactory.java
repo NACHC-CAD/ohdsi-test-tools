@@ -4,7 +4,7 @@ import java.sql.Connection;
 
 import org.nachc.cad.tools.ohdistesttools.util.database.connection.def.IConnectionFactory;
 import org.nachc.cad.tools.ohdistesttools.util.database.connection.impl.PostgresqlConnectionFactory;
-import org.nachc.cad.tools.ohdistesttools.util.database.connection.types.DbmsType;
+import org.nachc.cad.tools.ohdistesttools.util.database.types.DbmsType;
 import org.nachc.cad.tools.ohdistesttools.util.properties.app.OhdsiTestToolsAppProperties;
 
 public class ConnectionFactory {

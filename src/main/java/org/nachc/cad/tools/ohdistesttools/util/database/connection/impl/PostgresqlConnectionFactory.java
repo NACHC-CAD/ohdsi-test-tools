@@ -43,7 +43,7 @@ public class PostgresqlConnectionFactory implements IConnectionFactory {
 			url += "?" + "user=" + uid;
 			url += "&" + "password=" + pwd;
 			url += "&" + "currentSchema=" + schema;
-			log.info("Getting connection for url: \n" + url);
+			log.info("Getting connection for url: \n" + url + "\n");
 			Connection conn = DriverManager.getConnection(url);
 			return conn;
 		} catch (Exception exp) {
