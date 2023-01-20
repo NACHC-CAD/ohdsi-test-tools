@@ -8,17 +8,17 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class IndexDvo {
+public class ConstraintDvo {
 
 	private String schemaName;
 	
 	private String tableName;
 	
-	private String indexName;
+	private String constraintName;
 
 	private String sqlString;
 	
-	private String constraint_type;
+	private String constraintType;
 	
 	private List<String> columns = new ArrayList<String>();
 	

@@ -12,7 +12,7 @@ import org.yaorma.database.Data;
 import org.yaorma.database.Database;
 import org.yaorma.database.Row;
 
-public class PostgresqlIndexFactory implements IConstraintFactory {
+public class PostgresqlConstraintFactory implements IConstraintFactory {
 
 	public List<ConstraintDvo> getCdmConstraints() {
 		String schemaName = OhdsiTestToolsAppProperties.getPostgresCdmSchema();
@@ -34,20 +34,20 @@ public class PostgresqlIndexFactory implements IConstraintFactory {
 			ConstraintDvo dvo = null;
 			for(Row row : data) {
 				String tableName = row.get("tableName");
-				String indexName = row.get("indexName");
-				String indexDef = row.get("sqlString");
-				if(indexName.equals(prevIndexName) == false) {
+				String constraintName = row.get("constraintName");
+				String constraintType = row.get("constraintType");
+				if(constraintName.equals(prevIndexName) == false) {
 					if(dvo != null) {
 						rtn.add(dvo);
 					}
 					dvo = new ConstraintDvo();
 					dvo.setSchemaName(schemaName);
 					dvo.setTableName(tableName);
-					dvo.setConstraintName(indexName);
-					dvo.setSqlString(indexDef);
+					dvo.setConstraintName(constraintName);
+					dvo.setConstraintType(constraintType);
 				}
 				dvo.getColumns().add(row.get("columnName"));
-				prevIndexName = indexName;
+				prevIndexName = constraintName;
 			}
 			rtn.add(dvo);
 			return rtn;
@@ -60,22 +60,17 @@ public class PostgresqlIndexFactory implements IConstraintFactory {
 		String sqlString = "";
 		sqlString += "select \n";
 		sqlString += "	ns.nspname as schema, \n";
+		sqlString += "	con.contype as constraint_type, \n";
 		sqlString += "	t.relname as table_name, \n";
-		sqlString += "	i.relname as index_name, \n";
-		sqlString += "	a.attname as column_name, \n";
-		sqlString += "	ixs.indexdef as sql_string \n";
+		sqlString += "	con.conname as constraint_name, \n";
+		sqlString += "	a.attname as column_name \n";
 		sqlString += "from \n";
-		sqlString += "	pg_index ix \n"; 
-		sqlString += "	join pg_class i on ix.indexrelid = i.oid \n";
-		sqlString += "	join pg_class t on ix.indrelid = t.oid and t.relkind = 'r' \n";
+		sqlString += "	pg_constraint con \n";
+		sqlString += "	join pg_class t on con.conrelid = t.oid \n";
 		sqlString += "	join pg_namespace ns on t.relnamespace = ns.oid \n";
-		sqlString += "	join pg_indexes ixs on 1=1 \n";
-		sqlString += "		and ns.nspname = ixs.schemaname \n";
-		sqlString += "		and t.relname = ixs.tablename \n";
-		sqlString += "		and i.relname = ixs.indexname \n";
 		sqlString += "	join pg_attribute a on 1=1 \n";
 		sqlString += "		and a.attrelid = t.oid \n";
-		sqlString += "		and a.attnum = any(ix.indkey) \n";
+		sqlString += "		and a.attnum = any(con.conkey) \n";
 		sqlString += "where 1=1 \n";
 		sqlString += "	and ns.nspname = ? \n";
 		sqlString += "order by  \n";
