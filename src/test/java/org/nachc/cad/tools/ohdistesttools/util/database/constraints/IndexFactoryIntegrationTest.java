@@ -22,15 +22,20 @@ public class IndexFactoryIntegrationTest {
 		log.info("Got " + indexList.size() + " indexes");
 		String msg = "";
 		msg += "\n";
-		msg += "\tcols\t" + StringUtils.rightPad("schema_name", 32) + StringUtils.rightPad("table_name", 32) + StringUtils.rightPad("index_name", 32);
+		msg += "\tcols\t";
+		msg += StringUtils.rightPad("schema_name", 32);
+		msg += StringUtils.rightPad("table_name", 32);
+		msg += StringUtils.rightPad("index_name", 50);
+		msg += StringUtils.rightPad("column_list_as_string", 50);
+		msg += StringUtils.rightPad("index_definition", 50);
 		for (IndexDvo dvo : indexList) {
 			msg += "\n\t";
 			msg += "(" + dvo.getColumnCount() + ")\t";
 			msg += StringUtils.rightPad(dvo.getSchemaName(), 32);
 			msg += StringUtils.rightPad(dvo.getTableName(), 32);
 			msg += StringUtils.rightPad(dvo.getIndexName(), 50);
-			msg += dvo.getColumnListAsString();
-			msg += dvo.getIndexDefinition() + "\t";
+			msg += StringUtils.rightPad(dvo.getColumnListAsString(), 50);
+			msg += StringUtils.rightPad(dvo.getIndexDefinition(), 50);
 		}
 		log.info(msg);
 		log.info("Got " + indexList.size() + " indexes");

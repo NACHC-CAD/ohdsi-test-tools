@@ -29,8 +29,8 @@ public class IndexDvo {
 		for(String col : this.columns) {
 			if("".equals(rtn) == false) {
 				rtn += ", ";
-				rtn += col;
 			}
+			rtn += col;
 		}
 		return rtn;
 	}
