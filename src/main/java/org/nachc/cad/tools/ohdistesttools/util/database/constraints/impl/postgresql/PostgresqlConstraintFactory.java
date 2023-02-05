@@ -49,7 +49,9 @@ public class PostgresqlConstraintFactory implements IConstraintFactory {
 				dvo.getColumns().add(row.get("columnName"));
 				prevIndexName = constraintName;
 			}
-			rtn.add(dvo);
+			if(dvo != null) {
+				rtn.add(dvo);
+			}
 			return rtn;
 		} finally {
 			Database.close(conn);

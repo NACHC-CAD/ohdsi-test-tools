@@ -13,8 +13,8 @@ public class ConstraintFactoryIntegrationTest {
 
 	@Test
 	public void shouldGetIndexes() {
-		showIndexList(ConstraintFactory.getWebApiIndexes());
 		showIndexList(ConstraintFactory.getCdmIndexes());
+		showIndexList(ConstraintFactory.getWebApiIndexes());
 	}
 
 	private void showIndexList(List<ConstraintDvo> indexList) {

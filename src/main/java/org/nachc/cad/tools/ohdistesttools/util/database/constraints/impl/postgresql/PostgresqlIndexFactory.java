@@ -49,7 +49,9 @@ public class PostgresqlIndexFactory implements IConstraintFactory {
 				dvo.getColumns().add(row.get("columnName"));
 				prevIndexName = indexName;
 			}
-			rtn.add(dvo);
+			if(dvo != null) {
+				rtn.add(dvo);
+			}
 			return rtn;
 		} finally {
 			Database.close(conn);
